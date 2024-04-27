@@ -1,4 +1,4 @@
-# advancedJavaProjectAcademy
+# Advanced Java Project Academy
 ## Advanced Java project (clone the project!)
 
 
