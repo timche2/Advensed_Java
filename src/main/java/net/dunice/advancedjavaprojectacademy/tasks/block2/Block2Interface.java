@@ -33,10 +33,14 @@ public interface Block2Interface {
      */
     boolean isPermutationStrings(String str1, String str2);
 
-    /**
+   /**
      * Реализуйте метод сжатия строки на основе счетчика повторяющихся символов.
      * Например, строка aabcccccaaa должна превратиться в а2b1с5аЗ.
      * Если «сжатая» строка оказывается длиннее исходной, метод должен вернуть исходную строку.
+     */
+    String getCompressedString(String noCompressedString);
+
+     /**
      * Найти ПЕРВЫЙ (первое вхождение) наиболее часто повторяющийся в строке символ
      */
     Character getFrequencyCharacter(String source);
