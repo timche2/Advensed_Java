@@ -1,6 +1,6 @@
 package net.dunice.advancedjavaprojectacademy.tasks.block3;
 
-import net.dunice.advancedjavaprojectacademy.tasks.Student;
+import net.dunice.advanced_java_academy.tasks.Student;
 
 import java.util.List;
 
