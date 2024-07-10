@@ -2,7 +2,7 @@ package net.dunice.advancedjavaprojectacademy.tasks.block1;
 
 import net.dunice.advancedjavaprojectacademy.tasks.block1.Block1Аncestor.Animal;
 
-public class Block1Heirs {
+public class Block1 {
 
     public class Dog extends Animal {
         public void searchBySmell(){
