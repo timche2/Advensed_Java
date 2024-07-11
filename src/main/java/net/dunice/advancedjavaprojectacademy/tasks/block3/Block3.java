@@ -1,20 +1,12 @@
 package net.dunice.advancedjavaprojectacademy.tasks.block3;
 
-import net.dunice.advancedjavaprojectacademy.tasks.Employee;
-import net.dunice.advancedjavaprojectacademy.tasks.Student;
 
-import java.util.ArrayList;
+import net.dunice.advancedjavaprojectacademy.tasks.Student;
 import java.util.Comparator;
 import java.util.List;
-import java.util.TreeSet;
 import java.util.stream.Collectors;
-
 import net.dunice.advancedjavaprojectacademy.tasks.Sex;
-
-
-
-public class Block3 implements Block3Interface{
-
+public class Block3 implements Block3Interface {
 
     @Override
     public List<Student> getAgendaList(List<Student> studentList) {

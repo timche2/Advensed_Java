@@ -2,27 +2,24 @@ package net.dunice.advancedjavaprojectacademy.tasks.block2;
 
 import java.util.*;
 
-import static java.lang.Integer.bitCount;
-
-public class Block2 implements Block2Interface{
+public class Block2 implements Block2Interface {
     @Override
     public <T> Collection<T> getWithoutDublicates(Collection<T> collection) {
-        HashSet h = new HashSet(collection);
-        return (Collection<T>) List.of(h);
+        return new HashSet(collection);
     }
 
     @Override
     public <T> T[] arrayIterator(T[] array) {
-        for (var value : array){
+        for (var value : array) {
             System.out.println(value);
         }
-        return null;
+        return array;
     }
 
     @Override
     public Integer countNumber(Integer number) {
         int twoCount = 0;
-        int nowNumber = 0;
+        int nowNumber;
         for (int i = 2; i <= number; i++) {
             nowNumber = i;
             while (nowNumber != 0) {
@@ -55,10 +52,10 @@ public class Block2 implements Block2Interface{
     public String getCompressedString(String noCompressedString) {
         char charArrayCommpressing[] = noCompressedString.toCharArray();
         String compressingString = "";
-        if(noCompressedString.isEmpty()){
+        if(noCompressedString.isEmpty()) {
             return "";
         }
-        if (noCompressedString.equals(" ")){
+        if (noCompressedString.equals(" ")) {
             return " ";
         }
         for (int i = 0; i != noCompressedString.length() - 1; i++) {
@@ -92,7 +89,7 @@ public class Block2 implements Block2Interface{
     public Character getFrequencyCharacter(String source) {
         char charSource[] = source.toCharArray();
         LinkedHashMap<Character, Integer> mapSource = new LinkedHashMap<>();
-        for (var letter : charSource){
+        for (var letter : charSource) {
             if (mapSource.containsKey(letter) == false) {
                 mapSource.put(letter, 1);
             }
@@ -127,18 +124,17 @@ public class Block2 implements Block2Interface{
                     return false;
                 }else if ( (value == ')' && validStack.get(validStack.size()-1) == '(') ||
                         (value == ']' && validStack.get(validStack.size()-1) == '[') ||
-                        (value == '}' && validStack.get(validStack.size()-1) == '{')){
+                        (value == '}' && validStack.get(validStack.size()-1) == '{')) {
                     validStack.pop();
                 }
             }
         }
-        if (validStack.isEmpty()){
+        if (validStack.isEmpty()) {
             return true;
         }
         else {
             return false;
         }
-
     }
 
     @Override
@@ -147,7 +143,7 @@ public class Block2 implements Block2Interface{
         int j = charNoBracketsString.length - 1;
         int i = 0;
         String bracketsStringBegin = "";
-        if(noBracketsString.isEmpty()){
+        if(noBracketsString.isEmpty()) {
             return "()";
         }
         while (i < ((charNoBracketsString.length + 1) / 2)) {
@@ -164,6 +160,7 @@ public class Block2 implements Block2Interface{
         }
         return bracketsStringBegin + ")";
     }
+
     @Override
     public String getValidStringNoSpaces(String string) {
         char charString[] = string.toCharArray();
@@ -181,7 +178,7 @@ public class Block2 implements Block2Interface{
     public int numberOfIdenticalPairs(int[] nums) {
         int count = 0;
         for (int i = 0; i < nums.length; i++) {
-            for (int j = i+1; j < nums.length; j++) {
+            for (int j = i + 1; j < nums.length; j++) {
                 if (nums[i] == nums[j]){
                     count++;
                 }

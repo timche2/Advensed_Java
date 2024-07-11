@@ -1,25 +1,20 @@
 package net.dunice.advancedjavaprojectacademy.tasks.block4;
 
 import net.dunice.advancedjavaprojectacademy.tasks.Employee;
-
-
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-
-
 import java.util.Comparator;
-
 import static java.util.stream.Collectors.groupingBy;
 
-public class Block4 implements Block4Interface{
+public class Block4 implements Block4Interface {
     Comparator ComparatorBySalary =
             Comparator.comparingDouble(Employee::salary);
     Comparator ComparatorByWorkYears =
             Comparator.comparingInt(Employee::workYears);
+
     @Override
     public List<Employee> printAndGetListEmployees(Employee... employees) {
-
         List.of(employees).forEach(element -> System.out.println(element));
         return List.of(employees);
     }
