@@ -22,19 +22,25 @@ public class Block2 implements Block2Interface{
     @Override
     public Integer countNumber(Integer number) {
         int twoCount = 0;
-
-        while (number !=0 ) {
-            if (number % 10 == 2) {
-                twoCount ++;
+        int nowNumber = 0;
+        for (int i = 2; i <= number; i++) {
+            nowNumber = i;
+            while (nowNumber != 0) {
+                if (nowNumber % 10 == 2) {
+                    twoCount++;
+                }
+                nowNumber /= 10;
             }
-            number /= 10;
         }
-
         return twoCount;
     }
 
     @Override
     public boolean isPermutationStrings(String str1, String str2) {
+        if (str1.isEmpty() && str2.isEmpty()) {
+            return false;
+        }
+
         char Array1[] = str1.toCharArray();
         Arrays.sort(Array1);
         char Array2[] = str2.toCharArray();
@@ -42,7 +48,6 @@ public class Block2 implements Block2Interface{
 
         str2 = String.valueOf(Array2);
         str1 = String.valueOf(Array1);
-
         return str1.equals(str2);
     }
 
@@ -50,7 +55,12 @@ public class Block2 implements Block2Interface{
     public String getCompressedString(String noCompressedString) {
         char charArrayCommpressing[] = noCompressedString.toCharArray();
         String compressingString = "";
-
+        if(noCompressedString.isEmpty()){
+            return "";
+        }
+        if (noCompressedString.equals(" ")){
+            return " ";
+        }
         for (int i = 0; i != noCompressedString.length() - 1; i++) {
             int j = i;
             int count = 0;
@@ -106,33 +116,29 @@ public class Block2 implements Block2Interface{
     @Override
     public boolean isStringValid(String givenString) {
         char charGivenString[] = givenString.toCharArray();
-
-        int j = charGivenString.length - 1;
-        boolean validString = true;
-        for (int i = 0; i < charGivenString.length; i++) {
-            if (charGivenString[i] == '(') {
-                validString = false;
-                while (j > -1) {
-                    if(charGivenString[j] == ')') {
-                        validString = true;
-                        charGivenString[j] = ' ';
-                        charGivenString[i] = ' ';
-                        j--;
-                        break;
-                    }
-                    j--;
-                }
-                if (validString == false) {
-                    break;
-                }
+        Stack<Character> validStack = new Stack<>();
+        char value1 = 0;
+        for (var value :charGivenString){
+            if (value == '(' || value == '[' || value == '{') {
+                validStack.push(value);
             }
-            if (charGivenString[i] == ')') {
-                validString = false;
-                break;
+            if (value == ')'|| value == '}' || value == ']') {
+                if(validStack.isEmpty()) {
+                    return false;
+                }else if ( (value == ')' && validStack.get(validStack.size()-1) == '(') ||
+                        (value == ']' && validStack.get(validStack.size()-1) == '[') ||
+                        (value == '}' && validStack.get(validStack.size()-1) == '{')){
+                    validStack.pop();
+                }
             }
         }
+        if (validStack.isEmpty()){
+            return true;
+        }
+        else {
+            return false;
+        }
 
-        return validString;
     }
 
     @Override
@@ -141,12 +147,15 @@ public class Block2 implements Block2Interface{
         int j = charNoBracketsString.length - 1;
         int i = 0;
         String bracketsStringBegin = "";
+        if(noBracketsString.isEmpty()){
+            return "()";
+        }
         while (i < ((charNoBracketsString.length + 1) / 2)) {
             bracketsStringBegin += "(" + charNoBracketsString[i];
             i++;
         }
         if(charNoBracketsString.length % 2 == 0) {
-            bracketsStringBegin += charNoBracketsString[i];
+            bracketsStringBegin += "()" + charNoBracketsString[i];
             i++;
         }
         while (i < charNoBracketsString.length ) {
@@ -165,7 +174,7 @@ public class Block2 implements Block2Interface{
             }
             outString += charString[i];
         }
-        return outString;
+        return outString.trim();
     }
 
     @Override

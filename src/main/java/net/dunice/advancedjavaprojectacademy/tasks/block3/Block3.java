@@ -26,8 +26,8 @@ public class Block3 implements Block3Interface{
     @Override
     public List<Student> getJobList(List<Student> studentList) {
         return  studentList.stream()
-                .filter( x -> (x.age() >= 18 && x.age() < 60 && x.sex() == Sex.MAN) ||
-                        (x.age() >= 18 && x.age() < 55 && x.sex() == Sex.WOMAN))
+                .filter( x -> (x.age() >= 18 && x.age() <= 60 && x.sex() == Sex.MAN) ||
+                        (x.age() >= 18 && x.age() <= 55 && x.sex() == Sex.WOMAN))
                 .collect(Collectors.toList());
     }
 

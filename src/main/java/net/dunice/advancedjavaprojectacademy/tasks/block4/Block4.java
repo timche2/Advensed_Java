@@ -20,11 +20,8 @@ public class Block4 implements Block4Interface{
     @Override
     public List<Employee> printAndGetListEmployees(Employee... employees) {
 
-        var sortedEmployees = List.of(employees).stream()
-                .sorted(ComparatorBySalary).toList()
-                .stream().sorted(ComparatorByWorkYears).toList();
-        sortedEmployees.forEach(element -> System.out.println(element));
-        return sortedEmployees;
+        List.of(employees).forEach(element -> System.out.println(element));
+        return List.of(employees);
     }
 
     @Override
